@@ -5,21 +5,20 @@
 #include <iostream>
 
 class checking_account : public bank_account {
-	friend std::ostream &operator << (std::ostream& os, checking_account *yourAccount);
-	public:
-		checking_account();
-		checking_account(float, float);
-		void setMinBalance(checking_account yourAccount [],float newBalance, int i);
-		float getMinBalance(checking_account yourAccount);
-		void applyMonthlycharge(checking_account& yourAccount);
-		void setMonthlyCharge(checking_account yourAccount[],float newCharge, int i);
-		float getMonthlyCharge(checking_account yourAccount);
-		void withdraw(float amount, checking_account& yourAccount);
-
-	private:
-		float minBalance;
-		float monthlyCharge;
+	friend std::ostream &operator << (std::ostream& os, checking_account *yourBank);
+public:
+	checking_account();
+	checking_account(float, float);
+	void setMinBalance(checking_account &yourBank, float tempMinBal);
+	float getMinBalance(checking_account yourBank);
+	void applyMonthlycharge(checking_account &yourBank);
+	void setMonthlyCharge(checking_account &yourBank, float tempMonthlyChrg);
+	float getMonthlyCharge(checking_account yourBank);
+	void withdraw(float amount, checking_account &yourBank);
+	void addCustomer(checking_account yourBank[], int input);
+private:
+	float minBalance;
+	float monthlyCharge;
 };
 
 #endif
-

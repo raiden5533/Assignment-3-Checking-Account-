@@ -3,19 +3,14 @@
 
 #include <string>
 
-class bank_account
-{
-	
-	
-
+class bank_account {
 	private:
 		std::string customerName;
 		int accountNum;
 		float balance;
-		float interestRate;	
+		float interestRate;
 		// To keep track  of the number of user created accounts.
 		static int createdAcc;
-
 	public:
 		// Default Constructor
 		// PostCondition sets all class variables to a default value.
@@ -38,20 +33,26 @@ class bank_account
 		void withdraw(bank_account& yourBank, float amount);
 		// Display the balance of the current account selected.
 		// PostCondition:  balance is displayed.
-		void printBalance(bank_account yourBank[], int i);
+		void printBalance(bank_account &yourBank);
 		// Calculates the interest accumulated for a month based off the set interstRate
 		// PostCondition monthly interst is added to the balance
 		void calculateInterest(bank_account yourBank[], int i);
-		// Returns the amount left in balance.
-		// Used for the clacc checking_account.
-		float getBalance(bank_account& yourBank);
+		// Returns the value in the specific bank account balance
+		float getBalance(bank_account &yourBank);
+		// Takes in parameters for the specific bank account and sets the balance.
+		void setBalance(bank_account &yourBank, float startBal);
+		// Returns the customers named in the speicif bank acount
 		std::string getCustomerName(bank_account &yourBank);
+
+		void setCustomerName(bank_account &yourBank, std::string first, std::string last);
 		int getAccountNum(bank_account& yourBank);
-		float getInterestRate(bank_account& yourBank);
+		void setAccountNum(bank_account &yourBank);
+		float getInterestRate(bank_account &yourBank);
+		void setInterestRate(bank_account &yourBank, float interest);
 		void updateBalance(bank_account& yourBank, float amount);
-		int getNumOfAccounts(bank_account &yourBank);
+		int getNumOfAccounts();
+		void incrementNumOfAccounts();
 		bank_account& operator+ (float amount);
 };
 
 #endif
-

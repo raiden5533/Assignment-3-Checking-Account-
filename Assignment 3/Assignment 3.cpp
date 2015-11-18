@@ -3,7 +3,6 @@
 
 #include "stdafx.h"
 #include "checking_account.h"
-#include "checking_account.h"
 #include <iostream>
 #include <iomanip>
 
@@ -38,7 +37,6 @@ void menu(checking_account yourBank[]) {
 	// If statement to figure out what function needs to be called based on user input
 	// This conditional checks to see if there is space to add another customer and if so, asks the user for customer info and then calls addCustomer
 	if (input == 1) {
-
 		// If the user continues to choose to add more customers the while loop will continue to add them.
 		while (input == 1) {
 			yourBank[0].addCustomer(yourBank, input);
@@ -89,7 +87,7 @@ void subMenu(checking_account yourBank[], int input) {
 
 	// Int i will keep track of the current account being manipulated and pass the value to the other functions.  
 	// The loops checks the user input and tries to match it to the appropriate account number.
-	for (int i = 0; i <= yourBank[0].getNumOfAccounts(yourBank[0]); ++i) {
+	for (int i = 0; i <= yourBank[0].getNumOfAccounts(); ++i) {
 		if (input == yourBank[0].getAccountNum(yourBank[i])) {
 			std::cout << std::setfill('-') << std::setw(80) << "-" << std::endl
 				<< "Customer Name:  " << yourBank[i].getCustomerName(yourBank[i]) << std::endl
@@ -122,8 +120,8 @@ void subMenu(checking_account yourBank[], int input) {
 			}
 			// Calls print balance to display the current account's balance
 			else if (input == 3) {
-				yourBank[0].printBalance(yourBank, i);
-				input = yourBank[i].getAccountNum(yourBank[i]);
+				yourBank[0].printBalance(yourBank[i]);
+				input = yourBank[0].getAccountNum(yourBank[i]);
 				subMenu(yourBank, input);
 			}
 			// Calls calculateInterest for the current account.
@@ -134,7 +132,7 @@ void subMenu(checking_account yourBank[], int input) {
 			}
 			// Returns the user to the main menu.
 			else if (input == 5) {
-				return;
+				menu(yourBank);
 			}
 			// Error message when the account number does not match.
 			else {
